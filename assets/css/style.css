@@ -1,0 +1,181 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+img {
+	width: 100%;
+	height: 400px;
+	object-fit: cover;
+}
+
+button {
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.slides-section {
+	/* display: none; */
+	margin: 50px 0;
+}
+
+.slides-wrapper {
+	position: relative;
+	background-color: darkcyan;
+}
+.slides-section button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 2;
+}
+.prev-slide {
+	left: 20px;
+}
+.next-slide {
+	right: 20px;
+}
+.slides-container {
+	display: grid;
+	grid-template-columns: 1fr;
+	overflow: hidden;
+	height: 500px;
+	position: relative;
+}
+.slide {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 0;
+	height: 100%;
+	transition: width 0.5s ease-in;
+	z-index: -1;
+}
+
+.slide.active {
+	width: 100%;
+	z-index: 0;
+}
+.slide h2 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: darkcyan;
+	border-radius: 12px;
+	text-align: center;
+	max-width: 70%;
+	height: 0;
+	width: 0;
+	opacity: 0;
+	color: transparent;
+	transition: all 0.5s ease-in;
+	color: white;
+}
+.slide.active h2 {
+	display: block;
+	width: auto;
+	height: auto;
+	opacity: 1;
+	padding: 20px;
+}
+
+.slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.clock {
+	font-size: 30px;
+	text-align: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	max-width: 500px;
+	margin: 50px auto;
+}
+form input {
+	padding: 5px 10px;
+	width: 100%;
+	border: 2px solid;
+	outline-color: blue;
+}
+form button {
+	padding: 5px 10px;
+	cursor: pointer;
+}
+form div {
+	display: flex;
+	flex-direction: column;
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+}
+.overlay.open {
+	display: flex;
+}
+.modal {
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	max-width: 500px;
+	position: absolute;
+	/* display: none; */
+	top: 50%;
+	left: 50%;
+	z-index: 20;
+	transform: translate(-50%, -50%);
+}
+
+dialog::backdrop {
+	background-color: rgba(0, 0, 255, 0.5);
+}
+.modal.open {
+	display: block;
+}
+
+.container {
+	max-width: 1400px;
+	width: 100%;
+	padding: 0 16px;
+	margin: 0 auto;
+}
+
+label:has(~ [required])::after {
+	content: "*";
+	color: red;
+}
+
+/* input:user-invalid {
+	border-color: red;
+}
+input:user-valid {
+	border-color: green;
+} */
+
+.input-control.fail input {
+	border-color: red;
+}
+.input-control.success input {
+	border-color: green;
+}
+
+.error {
+	color: red;
+	height: 15px;
+}
